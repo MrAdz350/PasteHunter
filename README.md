@@ -82,6 +82,13 @@ Kibana is using the static IP address : 172.16.10.12 in the `esnet`  network
 Elasticsearch is running only on the localhost interface on default port 9200.
 The mount point is `/usr/share/elasticsearch/data` by default
 
+if elastic search fails to start and you see "max virtual memory areas vm.max_map_count [65530] likely too low"
+in the logs then try 
+
+`sudo sysctl -w vm.max_map_count=262144`
+
+https://elk-docker.readthedocs.io/#troubleshooting Paragraph starting As from version 5
+
 #### Pastehunter
 
 You can re-run the pastehunter script by doing `docker-compose up -d`
@@ -90,7 +97,7 @@ Docker-compose will use already running instances of Elasticsearch and Kibana
 
 # Configure
 
-copy settings.conf.sample to settings.conf
+copy settings.json.sample to settings.json
 populate the details.
 For the scraping API you need to whitelist your IP on pastebin. No API key is required. See the link above
 
